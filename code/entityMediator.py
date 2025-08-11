@@ -1,3 +1,4 @@
+
 from code.const import WIN_WIDTH
 from code.enemy import Enemy
 from code.enemyShot import EnemyShot
@@ -32,7 +33,7 @@ class EntityMediator:
         elif isinstance(ent1, EnemyShot) and isinstance(ent2, Player):
             valid_interaction = True
 
-        if valid_interaction:
+        if valid_interaction:  # if valid_interaction == True:
             if (ent1.rect.right >= ent2.rect.left and
                     ent1.rect.left <= ent2.rect.right and
                     ent1.rect.bottom >= ent2.rect.top and

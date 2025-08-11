@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import pygame
+import pygame.key
 from code.const import ENTITY_SHOT_DELAY, ENTITY_SPEED, PLAYER_KEY_DOWN, PLAYER_KEY_LEFT, PLAYER_KEY_RIGHT, \
     PLAYER_KEY_SHOOT, PLAYER_KEY_UP, WIN_HEIGHT, WIN_WIDTH
 from code.entity import Entity
@@ -28,7 +28,11 @@ class Player(Entity):
     def shoot(self):
         self.shot_delay -= 1
         if self.shot_delay == 0:
-            self.shoot_delay = ENTITY_SHOT_DELAY[self.name]
-        pressed_key = pygame.key.get_pressed()
-        if pressed_key[PLAYER_KEY_SHOOT[self.name]]:
-            return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery))
+            self.shot_delay = ENTITY_SHOT_DELAY[self.name]
+            pressed_key = pygame.key.get_pressed()
+            if pressed_key[PLAYER_KEY_SHOOT[self.name]]:
+                return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery))
+            else:
+                return None
+        else:
+            return None
